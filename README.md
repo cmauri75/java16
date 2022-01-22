@@ -1,2 +1,2 @@
-# java16
-Some usefull examples of new java feature (16 or less)
+# java17
+Some usefull examples of new java feature (11 to 17)

@@ -1,9 +1,10 @@
-package com.company;
+package com.company.leetcode;
 
 import org.apache.commons.lang3.RandomStringUtils;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 
 public class TrisChecker {
@@ -15,6 +16,9 @@ public class TrisChecker {
         System.out.println(resolve("XXX","OOO", "XXX"));
         System.out.println(resolve("XXX","XXX", "XXX"));
 
+        Stream.of(1, 2, 3, 4)
+                .mapMulti((number, downstream) -> downstream.accept(number))
+                .forEach(System.out::print);
     }
 
 

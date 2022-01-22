@@ -1,0 +1,87 @@
+-> Split Iterator
+ Introduced ijn java 8 is used for traversing and partitioning sequences. These smaller parts can be processed in parallel.
+ In real life programming, we may never need to use Spliterator directly. Under normal operations, it will behave exactly same as Java Iterator.
+
+-> Circuit braker
+The circuit breaker pattern is the solution for microservice problem of denial of service. 
+You wrap a protected function call in a circuit breaker object, which monitors for failures. Once the failures reach a certain threshold, the circuit breaker trips, and all further calls to the circuit breaker return with an error or with some alternative service or default message, without the protected call being made at all. This will make sure system is responsive and threads are not waiting for an unresponsive call.
+Curcuit can be: Closed, Open, HalfClosed
+ 
+-> Microservice patterns
+The principles used to design Microservices are as follows:
+* Independent & Autonomous Services
+* Scalability
+* Decentralization
+* Resilient Services
+* Real-Time Load Balancing
+* Availability
+* Continuous delivery through DevOps Integration
+* Seamless API Integration and Continuous Monitoring
+* Isolation from Failures
+* Auto -Provisioning
+
+Design Patterns of Microservices:https://www.edureka.co/blog/microservices-design-patterns
+* Aggregator: based on the DRY principle
+* API Gateway: s the proxy service to route a request to the concerned microservice
+* Chained or Chain of Responsibility: produces a single output which is a combination of multiple chained outputs.
+* Asynchronous Messaging: ae: queue
+* Database or Shared Data
+* Event Sourcing: take a queue of events to replicate in case of failuler or for other purposes
+* Branch: you can simultaneously process the requests and responses from  two or more independent microservices. So, unlike the chained design pattern, the request is not passed in a sequence
+* Command Query Responsibility Segregator (CQRS):   divide actions in write-only (command) and read-only (Query) parts
+* Circuit Breaker
+* Decomposition: Domain-Driven Design to decomposite you application in smaller parts
+
+-> The Hystrix framework library helps to control the interaction between services by providing fault tolerance and latency tolerance. 
+It improves overall resilience of the system by isolating the failing services and stopping the cascading effect of failures.
+
+-> microservizi transazionalità: saga pattern. A saga is a sequence of local transactions Each local transaction updates the database and publishes a message or event to trigger the next local transaction in the saga. If a local transaction fails because it violates a business rule then the saga executes a series of compensating transactions that undo the changes that were made by the preceding local transactions.
+
+-> tipologie di garbage collectors: 
+* Serial GC: simple for single thread and small heap
+* Parallel / Throughput GC: default uììin java8. More threads, long pauses, thread are stopped
+* Concurrent Mark Sweep Collector: low pauses, runs parallel to threads (deprecated by 9)
+* G1 Collector. Heap over 4 GB, multiprocessor, lot of ram, 
+* Z Garbage Collector: scalable low-latency garbage collector which debuted in Java 11 for linux, java 14 in win, prod from 15. ZGC performs all expensive work concurrently, without stopping the execution of application threads for more than 10 ms
+
+Memory:Heap, Stack, Code, 
+Static
+--> Stack Memory in Java is used for static memory allocation and the execution of a thread
+--> Heap space is used for the dynamic memory allocation of Java objects and JRE classes at runtime
+
+-> ACID. Atomicity, Consistency, Isolation, e Durability
+
+-> isolamento: read uncommitted, read committed, repeatable read (genera phantoms), serializable
+
+-> hash functions: 
+MD5 Algorithm
+SHA1/2/3 Algorithms
+
+-> what is serialID? Is a unique identifier for each class, JVM uses it to compare the versions of the class ensuring that the same class was used during Serialization is loaded during Deserialization. Specifying one gives more control, though JVM does generate one if you don't specify
+
+- Spring core vs spring boot:
+Spring Framework is the most popular application development framework of Java The main feature of the Spring Framework is dependency Injection or Inversion of Control (IoC)
+Spring Boot is basically an extension of the Spring framework, which eliminates the boilerplate configurations required for setting up a Spring application.
+Spring is mainly concentrated on its core features and MVC features where a developer needs to configure manually and define which feature needs to be used by the application as per requirement. 
+Spring Boot is automatically loaded all the features of spring core and MVC automatically
+
+-> Bytecode injection vulnerability - Modifify bytecode: Pay attention to Deserialization (constructor is not called), BCEL or Javassist
+
+-> https://italiancoders.it/come-non-farsi-odiare-in-un-team-i-principi-solid/#disqus_thread
+* Single Responsability Principle
+* Open/Closed Principle
+* Liskov Substitution Principle
+* Interface Segregation Principle
+* Dependency Inversion Principle
+
+-> Spring profiles
+Profiles are a core feature of the framework — allowing us to map our beans to different profiles — for example, dev, test, and prod.
+We can then activate different profiles in different environments to bootstrap only the beans we need.
+
+-> Kafka groups
+Kafka has the concept of consumer groups where several consumers are grouped to consume a given topic. Consumers in the same consumer group are assigned the same group-id value.
+Kafka: Events, Streams, Topic - Kafka’s topics are divided into several partitions. 
+
+--> Java IO Vs. NIO
+Choosing between IO and NIO will depend on the use case. For fewer connections and a simple solution, IO might be a better fit for you. Whereas, if you want something more efficient that can handle thousands of connections simultaneously, NIO is probably a better choice, but bear in mind that it will introduce much code complexity. However, there are frameworks like Netty or Apache MINA that are built on top of NIO and hide the programming complexity.
+
